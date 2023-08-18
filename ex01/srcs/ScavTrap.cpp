@@ -6,7 +6,7 @@
 /*   By: nwyseur <nwyseur@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:58:52 by nwyseur           #+#    #+#             */
-/*   Updated: 2023/08/16 19:16:48 by nwyseur          ###   ########.fr       */
+/*   Updated: 2023/08/18 11:16:48 by nwyseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,29 @@ ScavTrap::~ScavTrap(void)
 	return;
 }
 
+ScavTrap& ScavTrap::operator=(ScavTrap& other)
+{
+	std::cout << "ScavTrap = operator Called" << std::endl;
+	this->_AttackDamage = other.getAttackDamage();
+	this->_EnergyPoints = other.getEnergyPoints();
+	this->_HitPoints = other.getHitPoints();
+	this->_Name = other.getName();
+	return (*this);
+}
+
 void	ScavTrap::guardGate(void)
 {
 	std::cout << "ScavTrap " << this->_Name << " is in gate keeper" << std::endl;
 	return;
+}
+
+void	ScavTrap::attack(const std::string& target)
+{
+	if (this->_EnergyPoints > 0 && this->_HitPoints > 0)
+	{
+		std::cout << "ScavTrap " << this->_Name << " attacks " << target << " causing " << this->_AttackDamage << " points of damage!" << std::endl;
+		this->_EnergyPoints--;
+	}
+	else
+		std::cout << "ScavTrap " << this->_Name << " is as lazy as his mother, he can't attack" << std::endl;
 }
