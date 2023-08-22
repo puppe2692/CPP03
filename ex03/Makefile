@@ -6,7 +6,7 @@
 #    By: nwyseur <nwyseur@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 21:18:35 by nwyseur           #+#    #+#              #
-#    Updated: 2023/08/18 17:52:43 by nwyseur          ###   ########.fr        #
+#    Updated: 2023/08/22 16:14:11 by nwyseur          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ CC_FLAGS	= -std=c++98 -Wall -Wextra -Werror -g3
 
 RM			:= rm -f
 
-%.o : %.c	${HEADER}
+%.o : %.cpp	${HEADER}
 			${CC} ${CC_FLAGS} -I${INC_DIR} -c $< -o $@
 
 all:		${NAME}
